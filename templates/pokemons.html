@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+    <h1>Pokemon</h1>
+
+    {% for pokemon in pokemons_list %}
+        <div class="pokemon" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+            <h2>{{ pokemon.name }}</h2>
+            <p>Type: {{ pokemon.type }}</p>
+            <a href="{{ url_for('pokemon', pokemon_id=pokemon.id) }}">View Details</a>
+        </div>
+    {% endfor %}
+{% endblock %}
