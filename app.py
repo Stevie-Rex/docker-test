@@ -1,4 +1,6 @@
 from flask import Flask, render_template, abort
+from werkzeug.security import generate_password_hash, check_password_hash
+import pymysql
 
 app = Flask(__name__)
 
@@ -26,6 +28,14 @@ def pokemon(pokemon_id):
         if pokemon["id"] == pokemon_id:
             return render_template("pokemon.html", pokemon=pokemon)
     abort(404)
+
+@app.route("/register")
+def register():
+    return render_template("register.html")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
 
 
 if __name__ == '__main__':
